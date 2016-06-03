@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class SiteLayoutTest < ActionDispatch::IntegrationTest
-
+#testiranje ispravnosti linkova koji postoje na stranici
   test "layout links" do
     get root_path
     assert_template 'static_pages/home'
