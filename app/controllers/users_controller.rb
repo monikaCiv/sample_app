@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   def show
     @user = User.find(params[:id])
   end
@@ -7,10 +7,11 @@ class UsersController < ApplicationController
   def new
     @user = User.new
   end
-  
+
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
@@ -19,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   private
-  #strong paramters, odrediti koji se parametri mogu podesiti, da ne bi dobio netko adminske ovlasti primjerice
+
     def user_params
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
